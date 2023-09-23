@@ -34,7 +34,7 @@ public class Browser {
             case "chrome": {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--headless=new");
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(chromeOptions);
                 break;
             }
             case "edge": {
