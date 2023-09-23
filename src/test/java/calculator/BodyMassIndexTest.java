@@ -27,7 +27,7 @@ public class BodyMassIndexTest extends TestBase {
         return new Object[][]{
                 {"33","female","155","55","BMI = 22.9 kg/m2"},
                 {"36","male","170","71","BMI = 24.6 kg/m2"},
-                {"36","male","170","81","BMI = 24.6 kg/m2"},
+                {"36","male","170","81","BMI = 28 kg/m2"},
         };
     }
     @Test(dataProvider = "testData")
