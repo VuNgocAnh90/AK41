@@ -1,12 +1,12 @@
 package theInternet;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import base.Browser;
+import base.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+import pages.LoginPage;
 
-public class LoginTest {
+public class LoginTest extends TestBase {
 
     /**
      * 1.Open browser
@@ -16,22 +16,29 @@ public class LoginTest {
      * 5.Click on Login button
      * 6.And the home page is appear
      */
+      LoginPage loginPage;
+      @Parameters({"browser"})
+      @BeforeClass
+      void setup(String browser){
+          Browser.openBrowser(browser);
+          loginPage = new LoginPage();
+      }
 
-//    @Test
-//    void successfullyWithValidCredentials(){
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://the-internet.herokuapp.com/login");
-//
-//        driver.findElement(By.id("username")).sendKeys("tomsmith");
-//        driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
-//        driver.findElement(By.cssSelector("button[type=submit]")).click();
-//
-//        //String message = driver.findElement(By.id("flash-messages")).getText();
-//        //Assert.assertTrue(message.contains(" You logged into a secure area!"));
-//
-//        Assert.assertEquals(driver.getCurrentUrl(),"https://the-internet.herokuapp.com/secure");
-//
-//        driver.quit();
-//    }
+      @DataProvider
+      Object[][] testData(){
+          return new Object[][]{
+                  {"tomsmith1","SuperSecretPassword!","Your username is invalid!"},
+                  {"tomsmith","SuperSecretPassword","Your password is invalid!"},
+                  {"tomsmith1","SuperSecretPassword","Your username is invalid!"},
+                  {"tomsmith","SuperSecretPassword!","You logged into a secure area!"},
+          };
+      }
+    @Test(dataProvider = "testData")
+    void tc01(String username, String password,String message){
+        loginPage.open();
+        loginPage.fillForm(username,password);
+        Assert.assertTrue(loginPage.getResult().contains(message));
+
+    }
 
 }

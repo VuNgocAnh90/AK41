@@ -12,7 +12,7 @@ public class FirefoxTest {
     void openBrowser(){
         WebDriver driver = new FirefoxDriver();
         driver.get("https://www.selenium.dev");
-        Assert.assertEquals(driver.getTitle(),"selenium");
+        Assert.assertEquals(driver.getTitle(),"Selenium");
         driver.quit();
     }
 

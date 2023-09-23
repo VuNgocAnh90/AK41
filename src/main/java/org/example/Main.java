@@ -1,15 +1,135 @@
 package org.example;
 
 import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.json.JsonOutput;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class Main {
+
+    public static void main(String[] args) {
+
+        StartWar person1 = new StartWar("Luke Skywalker", 172,77,
+                    "blond", "white","yellow","41.9BBY","male");
+        StartWar person2 = new StartWar("Darth Vader", 202,136,
+                    "none", "fair","blue","19BBY","male");
+        StartWar person3 = new StartWar("Leia Organa", 150,49,
+                    "brown", "light","brown","19BBY","female");
+        StartWar person4 = new StartWar("Owen Lars", 178,120,
+                    "brown, grey", "light","blue","52BBY","male");
+        StartWar person5 = new StartWar("Beru Whitesun lars", 165,75,
+                    "brown", "light","blue","47BBY","female");
+        StartWar person6 = new StartWar("Biggs Darklighter", 183,84,
+                    "black", "light","brown","24BBY","male");
+        StartWar person7 = new StartWar("Obi-Wan Kenobi", 182,77,
+                "auburn, white", "fair","blue-gray","57BBY","male");
+
+
+        //Convert Json to Object use Array list
+        List<StartWar> characters = Arrays.asList(person1,person2,person3,person4,person5,person6,person7);
+            characters.forEach(StartWar::info);
+
+        /**
+         * TODO:find person that has mass >100
+         */
+        List<StartWar> personHasMassGreater100 = characters
+                .stream()
+                .filter(person -> person.getMass()>100)
+                .collect(Collectors.toList());
+
+        personHasMassGreater100.forEach(StartWar::info);
+
+        /**
+         * total mass of characters
+         */
+        Integer totalMass = characters
+                .stream()
+                .mapToInt(StartWar::getMass)
+                .sum();
+
+        System.out.println("Total Mass: " + totalMass);
+
+//        /**
+//         * otal height of characters
+//         */
+//        Integer totalHeight = characters
+//                .stream()
+//                .mapToInt(StartWar::getHeight)
+//                .sum();
+//
+//        System.out.println("Total Height: " + totalHeight);
+
+        //use reduce
+        Integer heightSum = characters
+                .stream()
+                .reduce(0,(height,person)->height+person.getHeight(),Integer::sum);
+
+        System.out.printf("total height %d\n",heightSum);
+
+        /**
+         *get list name of person
+         */
+        List<String> name = characters
+                .stream()
+                .map(StartWar::getName)
+                .collect(Collectors.toList());
+
+        System.out.printf("name %s\n", name);
+
+        /**
+         * find max mass person
+         */
+
+        StartWar maxMassPerson = characters
+                .stream()
+                .max(Comparator.comparingInt(StartWar::getMass))
+                .get();
+
+        maxMassPerson.info();
+
+        /**
+         * find smallest person
+         */
+
+        StartWar heightSmallestPerson = characters
+                .stream()
+                .min(Comparator.comparingInt(StartWar::getHeight))
+                .get();
+
+        heightSmallestPerson.info();
+
+        /**
+         * sort by name
+         */
+
+        List<StartWar> sortName = characters
+                .stream()
+                .sorted(Comparator.comparing(StartWar::getName).reversed())
+                .collect(Collectors.toList());
+
+        sortName.forEach(StartWar::info);
+
+        /**
+         * sort by mass
+         */
+
+        List<StartWar> maxMass = characters
+                .stream()
+                .sorted(Comparator.comparingInt(StartWar::getMass).reversed())
+                .collect(Collectors.toList());
+
+        maxMass.forEach(StartWar::info);
+
+
+    };
+
+
+
+    };
+
 //    public static void main(String[] args) {
 //        //Viet chuong trinh kiem tra so nguyen nhp vao co phai la so chan ko?
 //        int n =-5;
@@ -76,24 +196,6 @@ public class Main {
 //    }
 
 
-    public static void main(String[] args) {
-            List<StartWar> startWars = new ArrayList<>();
-            startWars.add(new StartWar("Luke Skywalker", 172,77,
-                    "blond", "white","yellow","41.9BBY","male"));
-            startWars.add(new StartWar("Darth Vader", 202,136,
-                    "none", "fair","blue","19BBY","male"));
-            startWars.add(new StartWar("Leia Organa", 150,49,
-                    "brown", "light","brown","19BBY","female"));
-            startWars.add(new StartWar("Owen Lars", 178,120,
-                    "brown, grey", "light","blue","52BBY","male"));
-            startWars.add(new StartWar("Beru Whitesun lars", 165,75,
-                    "brown", "light","blue","47BBY","female"));
-            startWars.add(new StartWar("Biggs Darklighter", 183,84,
-                    "black", "light","brown","24BBY","male"));
-            startWars.add(new StartWar("Obi-Wan Kenobi", 182,77,
-                "auburn, white", "fair","blue-gray","57BBY","male"));
-
-    }
 //        Fruit apple = new Fruit("Apple", "red");
 //        Fruit mango = new Fruit("Mango", "yellow");
 //        Fruit banana = new Fruit("Banana", "green");
@@ -151,5 +253,5 @@ public class Main {
 //
 //    }
 
-}
+//}
 
