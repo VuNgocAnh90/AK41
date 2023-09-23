@@ -1,24 +1,21 @@
 <suite name="the internet test">
-<!--    <test name="test login on chrome">-->
-<!--        <parameter name ="browser" value ="chrome"/>-->
-<!--        <classes>-->
-<!--            <class name = "theInternet.LoginTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="test checkbox on firefox">-->
-<!--        <parameter name ="browser" value ="firefox"/>-->
-<!--        <classes>-->
-<!--            <class name = "theInternet.CheckboxTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="test right click on chrome">-->
-<!--        <parameter name ="browser" value ="chrome"/>-->
-<!--        <classes>-->
-<!--            <class name = "theInternet.ContentMenuTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <parameter name ="browser" value ="chrome"/>
+    <test name="test login on chrome">
+        <classes>
+            <class name = "theInternet.LoginTest"/>
+        </classes>
+    </test>
+    <test name="test checkbox on chrome">
+        <classes>
+            <class name = "theInternet.CheckboxTest"/>
+        </classes>
+    </test>
+    <test name="test right click on chrome">
+        <classes>
+            <class name = "theInternet.ContentMenuTest"/>
+        </classes>
+    </test>
     <test name="test dropdown on chrome">
-        <parameter name ="browser" value ="chrome"/>
         <classes>
             <class name = "theInternet.DropDownTest"/>
         </classes>

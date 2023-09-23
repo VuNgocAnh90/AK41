@@ -1,6 +1,6 @@
 <suite name="body mass index">
-    <test name="unit metric on firefox">
-        <parameter name ="browser" value ="firefox"/>
+    <test name="unit metric on chrome">
+        <parameter name ="browser" value ="chrome"/>
         <classes>
             <class name = "calculator.BodyMassIndexTest"/>
         </classes>

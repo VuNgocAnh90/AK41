@@ -80,6 +80,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>todomvc-testplan.xml</suiteXmlFile>
                         <suiteXmlFile>theinternet-testplan.xml</suiteXmlFile>
+                        <suiteXmlFile>bmi-testplan.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
