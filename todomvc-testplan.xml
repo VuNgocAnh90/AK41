@@ -1,0 +1,8 @@
+<suite name="todo mvc test">
+    <test name="test todo mvc on chrome">
+        <parameter name ="browser" value ="chrome"/>
+        <classes>
+            <class name = "todoMvc.TodoListTest"/>
+        </classes>
+    </test>
+</suite>
