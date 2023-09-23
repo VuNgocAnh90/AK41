@@ -79,6 +79,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>todomvc-testplan.xml</suiteXmlFile>
+                        <suiteXmlFile>theinternet-testplan.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
